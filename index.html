@@ -1,12 +1,122 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta http-equiv="refresh" content="0; url=https://getjuicepress.myshopify.com/">
-    <script>window.location.href = "https://getjuicepress.myshopify.com/";</script>
-    <title>Redirecting to Juice Press...</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>We'll Be Back Soon</title>
+
+  <style>
+    /* ---------- Base layout ---------- */
+    body{
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+      background:#f5f5f7;
+      color:#333;
+      line-height:1.6;
+      margin:0;
+      padding:0;
+    }
+    .container{
+      max-width:800px;
+      margin:0 auto;
+      padding:40px 20px;
+      text-align:center;
+    }
+    .logo{display:flex;justify-content:center}
+    .logo img{width:300px;height:auto;margin-bottom:40px}
+    h1{font-size:2.5em;margin-bottom:20px;color:#1a1a1a}
+    p{font-size:1.2em;margin-bottom:25px;color:#555}
+    .social{margin-top:40px}
+    .social a{margin:0 10px;text-decoration:none;color:#555}
+    .social a:hover{color:#000}
+
+    /* ---------- CTA styles ---------- */
+    .cta{
+      display:inline-block;
+      padding:14px 30px;
+      margin-top:30px;
+      font-size:1.1em;
+      background-color:rgb(104,201,202);
+      color:#fff;
+      text-decoration:none;
+      border:2px solid rgb(104,201,202);
+      border-radius:6px;
+      cursor:pointer;
+      transition:background-color .25s ease,color .25s ease;
+    }
+    .cta:hover{
+      background-color:transparent;
+      color:#000;
+    }
+
+    /* ---------- Booking form wrapper ---------- */
+    #bookingForm{
+      display:none;              /* hidden until CTA click            */
+      min-height:900px;          /* reserve space for iframe           */
+      margin:60px auto 100px;
+      max-width:800px;
+      opacity:0;
+      transition:opacity .3s ease;
+    }
+    #bookingForm.show{
+      display:block;
+      opacity:1;                 /* fade-in effect                     */
+    }
+  </style>
 </head>
 <body>
-    <p>Redirecting to Juice Press...</p>
-    <p>If you are not redirected automatically, <a href="https://getjuicepress.myshopify.com/">click here</a>.</p>
+  <div class="container">
+    <div class="logo">
+      <img src="https://web.archive.org/web/20250309215053im_/https://driphydration.com/wp-content/uploads/2022/06/DripHydration-logo-250w-black.png" alt="Logo">
+    </div>
+
+    <h1>We're Currently Undergoing Maintenance</h1>
+    <p>Book an appointment or service by contacting us below:</p>
+
+    <p><b>Call</b>: USA <a href="tel:+13239314084">+1&nbsp;(323)&nbsp;931-4084</a> |
+       CT, NJ, NY, Philadelphia <a href="tel:+19177812070">+1&nbsp;917&nbsp;781&nbsp;2070</a> |
+       UK <a href="tel:+442080519337">+44&nbsp;208&nbsp;051&nbsp;9337</a></p>
+
+    <p><b>Email</b>: <a href="mailto:info@driphydration.com">info@driphydration.com</a> |
+       CT, NJ, NY, Philadelphia <a href="mailto:infonyc@driphydration.com">infonyc@driphydration.com</a></p>
+
+    <p><b>Hours</b>: 8:00 AM – 8:00 PM (Local Time)</p>
+    <p>Thank you for your patience and understanding.</p>
+
+    <!-- CTA -->
+    <a id="bookBtn" class="cta">Book IV Therapy</a>
+
+    <div class="social">
+      <a href="https://twitter.com/drip_hydration">Twitter</a> |
+      <a href="https://www.instagram.com/driphydration/">Instagram</a> |
+      <a href="https://www.facebook.com/driphydration/">Facebook</a> |
+      <a href="tel:+13239314084">USA +1 (323) 931-4084</a> |
+      <a href="tel:+442080519337">UK +44 208 051 9337</a> |
+      <a href="mailto:info@driphydration.com">Email Us</a>
+    </div>
+  </div>
+
+  <!-- Hidden booking form -->
+  <div id="bookingForm">
+    <script src="https://form.jotform.com/jsform/251255487641158"></script>
+  </div>
+
+  <script>
+    const btn  = document.getElementById('bookBtn');
+    const form = document.getElementById('bookingForm');
+    let revealed = false;
+
+    btn.addEventListener('click', () => {
+      if (!revealed) {
+        /* 1) reveal immediately */
+        form.classList.add('show');
+        revealed = true;
+      }
+
+      /* 2) wait one paint frame, THEN scroll (prevents overshoot) */
+      requestAnimationFrame(() => {
+        form.scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+  </script>
 </body>
 </html>
